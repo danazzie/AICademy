@@ -49,6 +49,37 @@ npm run dev
 
 The frontend runs at `http://localhost:5173`.
 
+## Railway deployment
+
+Use two Railway services/projects from the same GitHub repo.
+
+### Backend service
+
+Keep the existing backend deployment at the repo root.
+
+- Root directory: `/`
+- Dockerfile: `Dockerfile`
+- Port: Railway provides `$PORT`, Spring Boot runs on `8080` inside the container
+- Environment variable after frontend is deployed:
+  - `FRONTEND_URL=https://your-frontend-service.up.railway.app`
+
+Backend endpoints:
+
+- `https://your-backend-service.up.railway.app/`
+- `https://your-backend-service.up.railway.app/api/courses`
+
+### Frontend service
+
+Create a separate Railway service/project for the frontend.
+
+- Root directory: `frontend`
+- Build command: `npm install && npm run build`
+- Start command: `npm run preview -- --host 0.0.0.0 --port $PORT`
+- Environment variable:
+  - `VITE_API_URL=https://your-backend-service.up.railway.app/api/courses`
+
+After the frontend URL is generated, add it to the backend service as `FRONTEND_URL` and redeploy the backend.
+
 ## Recommendation request example
 
 ```json
