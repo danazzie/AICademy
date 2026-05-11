@@ -61,7 +61,7 @@ Keep the existing backend deployment at the repo root.
 - Dockerfile: `Dockerfile`
 - Port: Railway provides `$PORT`, Spring Boot runs on `8080` inside the container
 - Environment variable after frontend is deployed:
-  - `FRONTEND_URL=https://your-frontend-service.up.railway.app`
+  - `FRONTEND_URL=https://ai-cademy.up.railway.app`
 
 Backend endpoints:
 
@@ -79,6 +79,12 @@ Create a separate Railway service/project for the frontend.
   - `VITE_API_URL=https://your-backend-service.up.railway.app/api/courses`
 
 After the frontend URL is generated, add it to the backend service as `FRONTEND_URL` and redeploy the backend.
+
+Current frontend URL:
+
+```text
+https://ai-cademy.up.railway.app
+```
 
 ## Recommendation request example
 
